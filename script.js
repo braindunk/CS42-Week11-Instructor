@@ -582,10 +582,11 @@ function myUpdateCode() {
     }
   }
 
-  // preserve this reference to current game scene, as context change inside iterate() will change this
+  // preserve this reference to current game scene, as context change inside forEach() will change this
   let that = this;
   // manage enemy states for each enemy
-  enemies.children.iterate(function (en) {
+  // Phaser 4: Group.children is a native Set, so use forEach instead of iterate
+  enemies.children.forEach(function (en) {
     // use switch for each different state's code block
     switch ( en.custom_state ) {
       case 'wander':
